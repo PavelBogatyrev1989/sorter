@@ -2,7 +2,7 @@ class Sorter {
   constructor(value) {
     this.value = value;
     this.arr = [];
-    this.comparator = function (a, b) { return a - b; };
+    this.comparator = (left, right) => left - right;
   }
 
   add(element) {
@@ -22,14 +22,14 @@ class Sorter {
   }
 
   sort(indices) {
-
-    indices.sort(this.comparator);
+    indices.sort((left, right) => left - right);
     if (indices.length > 1) {
       var mastSorted = [];
       for (var i = 0; i < indices.length; ++i) {
-        mastSorted.push(this.arr[indices[i]]);
+        mastSorted.push(        
+          this.arr[indices[i]]);    
       }
-      mastSorted.sort(this.comparator);
+      mastSorted.sort(this.comparator);  
       for (var i = 0; i < indices.length; i++) {
         this.arr[indices[i]] = mastSorted[i];
       }
